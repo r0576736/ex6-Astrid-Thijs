@@ -18,12 +18,20 @@ function getAccount (username) {
 }
 
 function deposit (account, amount) {
+        if (typeof(amount) === 'number' && amount > 0){
 	account.balance += amount;
+    }
+        else { throw "The given amount is smaller than 0 or is not a number";
 }
+};
 
 function withdraw (account, amount) {
-	account.balance -= amount;
+        if (typeof (amount) === 'number' && amount > 0){
+        account.balance -= amount;
+        }
+	else { throw "The given amount is smaller than 0 or is not a number";
 }
+};
 
 function getBalance (account) {
 	return account.balance;
@@ -34,7 +42,7 @@ var astridAccount = createAccount({
 	balance: 0
 });
 
-deposit(astridAccount, 100);
+deposit(astridAccount, 400);
 console.log(getBalance(astridAccount));
 
 withdraw(astridAccount, 11);
@@ -44,11 +52,11 @@ var existingAccount = getAccount('Astrid');
 console.log(getBalance(astridAccount));
 
 var jelleAccount = createAccount({
-	username: 'Jelle007',
+	username: 'Jelle',
 	balance: 12
 });
 
 console.log(accounts);
 
-var existingJelleAccount = getAccount('Jelle007');
+var existingJelleAccount = getAccount('Jelle');
 console.log(existingJelleAccount);
