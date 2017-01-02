@@ -1,62 +1,61 @@
-var accounts = [ ];
+var accounts = [ ];                                 //alle accounts 
 
-function createAccount (account) {
+function createAccount (account) {                  //account aanmaken
 	accounts.push(account);
 	return account;
 }
 
-function getAccount (username) {
-	var matchedAccount;
-
-	accounts.forEach( function (account) {
-		if (account.username === username) {
-			matchedAccount = account;
-		}
-	} );
-
-	return matchedAccount;
-}
-
-function deposit (account, amount) {
+function getAccount (username) {          //account opvragen met bepaalde 'username'
+    var i;
+    var matchedAccount;
+    for(i=0; i<accounts.length; i++){               //enkel de accounts opvragen met zelfde username en password
+       if (accounts[i].username === username) {
+           matchedAccount = accounts[i];
+       }
+}      return matchedAccount;
+};
+    
+function deposit (account, amount) {                        //geld storten
+    this.value = account.balance;
         if (typeof(amount) === 'number' && amount > 0){
 	account.balance += amount;
     }
         else { throw "The given amount is smaller than 0 or is not a number";
-}
+}       return '\n' + account.username + " zet geld op de rekening: €" + this.value + " + " + "€" + amount + " = " + "€" + account.balance + "." + '\n';
 };
 
-function withdraw (account, amount) {
+function withdraw (account, amount) {                       //geld afhalen
+    this.value = account.balance;
         if (typeof (amount) === 'number' && amount > 0){
         account.balance -= amount;
         }
 	else { throw "The given amount is smaller than 0 or is not a number";
-}
+}       return '\n' + account.username + " haalt geld af van de rekening: €" + this.value + " - " + "€" + amount + " = " + "€" +account.balance + "." + '\n';
 };
 
-function getBalance (account) {
-	return account.balance;
-}
+function getBalance(username) {                               //balance opvragen
+    var account = getAccount(username);
+    return function () {
+	return username + " heeft €" + account.balance + " op de rekening staan." + '\n';
+    };
+};
 
-var astridAccount = createAccount({
-	username: 'Astrid',
-	balance: 0
-});
+var Astrid = ({username: "Astrid", balance: 20});
+var Jelle = ({username: "Jelle", balance: 3});
 
-deposit(astridAccount, 400);
-console.log(getBalance(astridAccount));
+console.log(createAccount(Astrid));
+console.log(createAccount(Jelle));
 
-withdraw(astridAccount, 11);
-console.log(getBalance(astridAccount));
+console.log(getAccount("Astrid"));
+console.log(getAccount("Jelle"));
 
-var existingAccount = getAccount('Astrid');
-console.log(getBalance(astridAccount));
+console.log(deposit(Astrid, 20));
+console.log(deposit(Jelle, 100));
 
-var jelleAccount = createAccount({
-	username: 'Jelle',
-	balance: 12
-});
+console.log(withdraw(Astrid, 18));
+console.log(withdraw(Jelle, 10));
 
-console.log(accounts);
+console.log(getBalance("Astrid")('balance'));
+console.log(getBalance("Jelle")('balance'));
 
-var existingJelleAccount = getAccount('Jelle');
-console.log(existingJelleAccount);
+
