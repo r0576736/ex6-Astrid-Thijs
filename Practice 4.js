@@ -19,14 +19,23 @@ function BankAccount(account, amount){
     this.amount = amount;
     this.value = getBalance(account)('balance');
     this.account = getAccount(account);
+    
     this.deposit = function(){
         if (typeof(amount) === 'number' && amount > 0){
 	this.account.balance += this.amount;
     }
         else { throw "The given amount is smaller than 0 or is not a number";
 }       return this.account.username + " zet geld op de rekening:" + " +€" + this.amount + " = €" +this.account.balance +'\n' + ".";
-};
+    };
+    
+    this.withdraw = function(){
+        if (typeof(amount) === 'number' && amount > 0){
+	this.account.balance += this.amount;
     }
+        else { throw "The given amount is smaller than 0 or is not a number";
+}       return this.account.username + " haalt geld af van de rekening:" + " -€" + this.amount + " = €" +this.account.balance +'\n' + ".";
+    };
+}
     
 
 function getBalance(username) {                               //balance opvragen
@@ -48,5 +57,9 @@ console.log(getBalance("Jelle")('balance'));
 console.log(new BankAccount("Astrid", 15).deposit());
 console.log(new BankAccount("Jelle", 40).deposit());
 
+console.log(new BankAccount("Astrid", 77).withdraw());
+console.log(new BankAccount("Jelle", 12).withdraw());
 
+console.log(getBalance("Astrid")('balance'));
+console.log(getBalance("Jelle")('balance'));
 
