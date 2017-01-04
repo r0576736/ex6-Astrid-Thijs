@@ -8,7 +8,7 @@ function createAccount (account) {                  //account aanmaken
 function getAccount (username) {                    //account opvragen met bepaalde 'username'
     var i;
     var matchedAccount;
-    for(i=0; i<accounts.length; i++){               //enkel de accounts opvragen met zelfde username en password
+    for(i=0; i<accounts.length; i++){               //enkel de accounts opvragen met zelfde username
        if (accounts[i].username === username) {
            matchedAccount = accounts[i];
        }
