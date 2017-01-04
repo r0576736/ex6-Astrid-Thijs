@@ -18,10 +18,10 @@ function getBalance (account) {
 	return account.balance;
 }
 
-deposit(account, 1000);
+deposit(account, 20);
 
 console.log(getBalance(account));
 
-withdraw(account, 121);
+withdraw(account, 100);
 
 console.log(getBalance(account));
