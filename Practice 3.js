@@ -5,7 +5,7 @@ function createAccount (account) {                  //account aanmaken
 	return account;
 }
 
-function getAccount (username) {          //account opvragen met bepaalde 'username'
+function getAccount (username) {                    //account opvragen met bepaalde 'username'
     var i;
     var matchedAccount;
     for(i=0; i<accounts.length; i++){               //enkel de accounts opvragen met zelfde username en password
@@ -15,7 +15,7 @@ function getAccount (username) {          //account opvragen met bepaalde 'usern
 }      return matchedAccount;
 };
     
-function deposit (account, amount) {                        //geld storten
+function deposit (account, amount) {                //geld storten
     this.value = account.balance;
         if (typeof(amount) === 'number' && amount > 0){
 	account.balance += amount;
@@ -24,7 +24,7 @@ function deposit (account, amount) {                        //geld storten
 }       return '\n' + account.username + " zet geld op de rekening: €" + this.value + " + " + "€" + amount + " = " + "€" + account.balance + "." + '\n';
 };
 
-function withdraw (account, amount) {                       //geld afhalen
+function withdraw (account, amount) {               //geld afhalen
     this.value = account.balance;
         if (typeof (amount) === 'number' && amount > 0){
         account.balance -= amount;
@@ -33,7 +33,7 @@ function withdraw (account, amount) {                       //geld afhalen
 }       return '\n' + account.username + " haalt geld af van de rekening: €" + this.value + " - " + "€" + amount + " = " + "€" +account.balance + "." + '\n';
 };
 
-function getBalance(username) {                               //balance opvragen
+function getBalance(username) {                     //balance opvragen
     var account = getAccount(username);
     return function () {
 	return username + " heeft €" + account.balance + " op de rekening staan." + '\n';
