@@ -1,35 +1,35 @@
 var accounts = [ ];
 
-function createAccount (account) {
+function createAccount (account) {                       //account aanmaken
 	accounts.push(account);
 	return account;
 }
 
-function getAccount (username) {
+function getAccount (username) {                         //account opvragen
 	var matchedAccount;
 
-	accounts.forEach( function (account) {
-		if (account.username === username) {
+	accounts.forEach( function (account) {           //wanneer username matched met account naam
+		if (account.username === username) { 
 			matchedAccount = account;
 		}
 	} );
 
-	return matchedAccount;
+	return matchedAccount;                           //het account weergeven 
 }
 
-function deposit (account, amount) {
+function deposit (account, amount) {                     //geld storten
 	account.balance += amount;
 }
 
-function withdraw (account, amount) {
+function withdraw (account, amount) {                    //geld afhalen
 	account.balance -= amount;
 }
 
-function getBalance (account) {
+function getBalance (account) {                          //balance opvragen
 	return account.balance;
 }
 
-var astridAccount = createAccount({
+var astridAccount = createAccount({                      //nieuw account aanmaken
 	username: 'Astrid',
 	balance: 0
 });
