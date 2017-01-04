@@ -1,19 +1,19 @@
 
-var account = {
+var account = {                                 
 	balance: 0
 };
 
-// deposit(account, amount)
+//geld storten
 function deposit (account, amount) {
 	account.balance += amount;
 }
 
-// withdraw(account, amount)
+//geld afhalen
 function withdraw (account, amount) {
 	account.balance -= amount;
 }
 
-// getBalance(account)
+//balance weergeven
 function getBalance (account) {
 	return account.balance;
 }
