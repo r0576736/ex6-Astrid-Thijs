@@ -1,11 +1,11 @@
-var accounts = [];                                 //alle accounts 
+var accounts = [];                                  //alle accounts 
 
 function createAccount (account) {                  //account aanmaken
 	accounts.push(account);
 	return account;
 }
 
-function getAccount (username) {          //account opvragen met bepaalde 'username'
+function getAccount (username) {                    //account opvragen met bepaalde 'username'
     var i;
     var matchedAccount;
     for(i=0; i<accounts.length; i++){               //enkel de accounts opvragen met zelfde username en password
@@ -15,7 +15,7 @@ function getAccount (username) {          //account opvragen met bepaalde 'usern
 }      return matchedAccount;
 };
 
-function BankAccount(account, amount){
+function BankAccount(account, amount){              //functie maken waarin je geld kan storten en afhalen, genaamd 'BankAccount'
     this.amount = amount;
     this.value = getBalance(account)('balance');
     this.account = getAccount(account);
@@ -38,7 +38,7 @@ function BankAccount(account, amount){
 }
     
 
-function getBalance(username) {                               //balance opvragen
+function getBalance(username) {                     //balance opvragen
     account = getAccount(username);
     return function () {
 	return username + " heeft €" + account.balance + " op de rekening staan." + '\n';
